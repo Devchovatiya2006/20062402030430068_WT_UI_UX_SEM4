@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - AI Car Rent</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>AI Car Rent</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Cars.html">Cars</a></li>
+                <li><a href="Booking.html">Booking</a></li>
+                <li><a href="Profile.html">Profile</a></li>
+                <li><a href="Login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="Booking">
+        <h2>Book Your Car</h2>
+        <form action="#" method="POST">
+            <label for="car">Select Car:</label>
+            <select id="car" name="car">
+                <option value="fortuner">Fortuner GR</option>
+                <option value="corolla">Corolla Cross</option>
+                <option value="ionic">Ionic 5</option>
+            </select>
+            
+            <label for="pickup">Pick-up Date:</label>
+            <input type="date" id="pickup" name="pickup">
+            
+            <label for="dropoff">Drop-off Date:</label>
+            <input type="date" id="dropoff" name="dropoff">
+            
+            <label for="location">Pick-up Location:</label>
+            <input type="text" id="location" name="location" placeholder="Enter location">
+            
+            <button type="submit" class="btn">Book Now</button>
+        </form>
+    </section>
+</body>
+</html>

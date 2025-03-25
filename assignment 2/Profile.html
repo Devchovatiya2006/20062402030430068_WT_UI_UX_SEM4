@@ -4,28 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Car Rent - Profile</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f8f9fa; }
+        .navbar { background: #333; padding: 15px; color: white; font-size: 18px; }
+        .container { width: 40%; margin: 50px auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+        h2 { color: #333; }
+        p { font-size: 18px; }
+        .btn-container { margin-top: 20px; }
+        button { padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 5px; }
+        .edit-btn { background-color: #007bff; color: white; }
+        .logout-btn { background-color: #dc3545; color: white; }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>AI Car Rent</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="Cars.html">Cars</a></li>
-                <li><a href="Booking.html">Booking</a></li>
-                <li><a href="Profile.html">Profile</a></li>
-                <li><a href="Login.html">Login</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section id="Profile">
+
+    <div class="navbar">AI Car Rent</div>
+
+    <div class="container">
         <h2>Your Profile</h2>
-        <p>Name: John Doe</p>
-        <p>Email: johndoe@example.com</p>
-        <p>Phone: +1234567890</p>
-        <a href="Edit profile.html" class="btn">Edit Profile</a>
-        <a href="logout.html" class="btn">Logout</a>
-    </section>
+        <p><strong>Name:</strong> <span id="name">Loading...</span></p>
+        <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+        <p><strong>Phone:</strong> <span id="phone">Loading...</span></p>
+
+        <div class="btn-container">
+            <button class="edit-btn" onclick="window.location.href='Profile(e).html'">Edit Profile</button>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <script>
+        // Fetch user data from backend API
+        fetch('get_user.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    document.getElementById('name').innerText = data.name;
+                    document.getElementById('email').innerText = data.email;
+                    document.getElementById('phone').innerText = data.phone;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+                alert('Failed to load profile data.');
+            });
+
+        // Logout function
+        function logout() {
+            window.location.href = "logout.php"; // Redirect to logout page
+        }
+    </script>
+
 </body>
 </html>
